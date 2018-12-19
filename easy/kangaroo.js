@@ -64,7 +64,6 @@ function main() {
         [true, "YES"],
         [false, "NO"]
     ]).get(result);
-    console.log(result);
 
     ws.write(result + "\n");
 
