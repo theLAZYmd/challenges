@@ -8,6 +8,18 @@ Array.prototype.toFrequency = function () {
     }, {});
 }
 
+Object.compare = function (obj1, obj2) {
+    for (let [k, v] of Object.entries(obj1)) {
+        if (obj2[k] === undefined || obj2[k] === null) return false;
+        if (obj2[k].toString() !== v.toString()) return false;
+    }
+    for (let [k, v] of Object.entries(obj2)) {
+        if (obj1[k] === undefined || obj1[k] === null) return false;
+        if (obj1[k].toString() !== v.toString()) return false;
+    }
+    return true;
+}
+
 const fs = require('fs');
 
 process.stdin.resume();
@@ -30,18 +42,6 @@ process.stdin.on('end', _ => {
 
 function readLine() {
     return inputString[currentLine++];
-}
-
-Object.compare = function (obj1, obj2) {
-    for (let [k, v] of Object.entries(obj1)) {
-        if (obj2[k] === undefined || obj2[k] === null) return false;
-        if (obj2[k].toString() !== v.toString()) return false;
-    }
-    for (let [k, v] of Object.entries(obj2)) {
-        if (obj1[k] === undefined || obj1[k] === null) return false;
-        if (obj1[k].toString() !== v.toString()) return false;
-    }
-    return true;
 }
 
 // Complete the organizingContainers function below.
