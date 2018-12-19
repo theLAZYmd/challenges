@@ -12,6 +12,29 @@ Math.genRandomRange = function (limit, number) {
 	return range;
 };
 
+Math.logBase = function (base, number) {
+    return (Math.log(number) / Math.log(base)).round(12);
+}
+
+Number.prototype.round = function (places) {
+    (Math.round(this * Math.pow(10, places)) / Math.pow(10, places));
+    return this;
+};
+
+Number.prototype.radix = function (base) {
+    if (this <= 0) return [0];
+    let sum = this;
+    let value = Math.floor(Math.logBase(base, this));
+    let radix = [];
+    do {
+        let digit = Math.floor(sum / base ** value);
+        radix.push(digit);
+        sum -= digit * base ** value;
+        value--;
+    } while (value >= 0);
+    return radix;
+};
+
 const fs = require('fs');
 
 process.stdin.resume();
@@ -79,13 +102,13 @@ class Cube {
         ].map(Math.round)
     }
 
-    static getTriplets(n, size) {
-        let x = Math.floor(n / (size ** 2));
-        let rx = n - (x * (size ** 2));
-        let y = Math.floor(rx / (size ** 1));
-        let ry = rx - (y * (size ** 1));
-        let z = Math.floor(ry / (size ** 0)); //the number floored is itself
-        return [x, y, z]
+    static getTriplets(n, base) {
+        let radix = n.radix(base);
+        if (radix.length > 3) console.error(n);
+        while (radix.length !== 3) {
+            radix.unshift(0);
+        }
+        return radix;
     }
 
     getSum() {
@@ -110,7 +133,7 @@ process.stdin.emit('data', `3
 3
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 3 1 1 1 3 1 2 2`)*/
 
-//console.log((new Cube(Math.genRandomRange(3, 3 ** 3))).getSum());
+console.log((new Cube(Math.genRandomRange(3, 3 ** 3))).getSum());
 
 function main() {
     //const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
@@ -125,11 +148,11 @@ function main() {
         let values = new Cube(cube);
         let result = values.getSum();
 
-        ws.write(result.join(" ") + "\n");
+        //ws.write(result.join(" ") + "\n");
         console.log(result.join(" ") + "\n");
     }
 
-   ws.end();
+   //ws.end();
 }
 
 process.stdin.emit('end');
