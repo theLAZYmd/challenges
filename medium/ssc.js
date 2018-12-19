@@ -14,11 +14,10 @@ Math.genRandomRange = function (limit, number) {
 
 Math.logBase = function (base, number) {
     return (Math.log(number) / Math.log(base)).round(12);
-}
+};
 
-Number.prototype.round = function (places) {
-    (Math.round(this * Math.pow(10, places)) / Math.pow(10, places));
-    return this;
+Number.prototype.round = function (places) { //rounds a number to a certain number of places. Give negative value to reduce accuracy. 2259.round(-2) === 2300
+    return (Math.round(this * Math.pow(10, places)) / Math.pow(10, places));
 };
 
 Number.prototype.radix = function (base) {
@@ -133,7 +132,7 @@ process.stdin.emit('data', `3
 3
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 3 1 1 1 3 1 2 2`)*/
 
-console.log((new Cube(Math.genRandomRange(3, 3 ** 3))).getSum());
+console.log((new Cube(Math.genRandomRange(50, 50 ** 3))).getSum().join(" "));
 
 function main() {
     //const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
