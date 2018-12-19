@@ -69,11 +69,9 @@ function main() {
     const s = parseInt(readLine(), 10);
     let dna = new DNA(genes, health);
     let max = 0, min = Infinity;
-    console.log(s);
     for (let sItr = 0; sItr < s; sItr++) {
         let [first, last, d] = readLine().split(' ');
         let value = dna.run(parseInt(first, 10), parseInt(last, 10), d);
-        if (sItr % 1000 === 0) console.log(value, max, min);
         if (value > max) max = value;
         else if (min === 0) continue;
         else if (value < min) min = value;
