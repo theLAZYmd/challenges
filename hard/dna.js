@@ -1,4 +1,5 @@
 'use strict';
+const AC = require("../aho-corasick");
 
 const fs = require('fs');
 process.stdin.resume();
@@ -41,6 +42,8 @@ class DNA {
     constructor(genes, health) {
         this.genes = genes;
         this.health = health;
+        this.table = new AC(this.genes);
+        console.log(this.table);
     }
 
     run(start, finish, d) {
@@ -69,6 +72,7 @@ function main() {
     const s = parseInt(readLine(), 10);
     let dna = new DNA(genes, health);
     let max = 0, min = Infinity;
+    console.log(s);
     for (let sItr = 0; sItr < s; sItr++) {
         let [first, last, d] = readLine().split(' ');
         let value = dna.run(parseInt(first, 10), parseInt(last, 10), d);
@@ -81,3 +85,13 @@ function main() {
     //ws.end();
 
 }
+
+process.stdin.emit('data', `6
+a b c aa d b
+1 2 3 4 5 6
+3
+1 5 caaab
+0 4 xyz
+2 4 bcdybc`);
+
+process.stdin.emit('end');
