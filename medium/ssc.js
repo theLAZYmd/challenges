@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/counting-special-sub-cubes/problem
 
 Math.randBetween = function (min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);

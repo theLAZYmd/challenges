@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/organizing-containers-of-balls/problem
 
 Array.prototype.toFrequency = function () {
     return this.reduce((acc, curr) => {

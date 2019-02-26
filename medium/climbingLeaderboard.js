@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
 
 const fs = require('fs');
 

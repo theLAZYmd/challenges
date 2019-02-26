@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/bigger-is-greater/problem
 
 const fs = require('fs');
 

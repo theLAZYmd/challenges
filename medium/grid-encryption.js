@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/encryption/problem
 //completed in 20 minutes
 
 const fs = require('fs');

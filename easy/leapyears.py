@@ -1,6 +1,9 @@
+# https://www.hackerrank.com/challenges/write-a-function/problem
+
 import datetime
 
-def is_leap(year): return (1900 <= year <= 10 ** 5) and ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0))
+def is_leap(year):
+    return (1900 <= year <= 10 ** 5) and ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0))
 
 now = datetime.datetime.now()
 

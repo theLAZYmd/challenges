@@ -1,4 +1,4 @@
-'use strict';
+//https://www.hackerrank.com/challenges/kangaroo/problem
 
 const fs = require('fs');
 
@@ -48,25 +48,20 @@ function kangaroo(x1, v1, x2, v2) {
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
-
     const x1V1X2V2 = readLine().split(' ');
-
     const x1 = parseInt(x1V1X2V2[0], 10);
-
     const v1 = parseInt(x1V1X2V2[1], 10);
-
     const x2 = parseInt(x1V1X2V2[2], 10);
-
     const v2 = parseInt(x1V1X2V2[3], 10);
+    let result = kangaroo(x1, v1, x2, v2);
 
-    let result = kangaroo(43, 2, 70, 2);
+    /*
     result = new Map([
         [true, "YES"],
         [false, "NO"]
     ]).get(result);
-
-    ws.write(result + "\n");
-
+    */
+    ws.write((result ? "YES" : "NO") + "\n");
     ws.end();
 }
 

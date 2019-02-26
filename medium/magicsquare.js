@@ -1,4 +1,5 @@
-/*'use strict';
+// https://www.hackerrank.com/challenges/magic-square-forming/problem
+'use strict';
 
 const fs = require('fs');
 
@@ -22,7 +23,7 @@ process.stdin.on('end', function() {
 
 function readLine() {
     return inputString[currentLine++];
-}*/
+}
 
 Array.prototype.flat = function (depth) {
     return this.reduce(function (flat, toFlatten) {

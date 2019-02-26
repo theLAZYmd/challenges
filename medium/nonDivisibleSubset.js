@@ -1,5 +1,7 @@
+//https://www.hackerrank.com/challenges/non-divisible-subset/problem
+
 const fs = require('fs');
-/*
+
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
 
@@ -20,7 +22,7 @@ process.stdin.on('end', _ => {
 
 function readLine() {
     return inputString[currentLine++];
-} */
+}
 
 // Complete the nonDivisibleSubset function below.
 function nonDivisibleSubset(k, S) {

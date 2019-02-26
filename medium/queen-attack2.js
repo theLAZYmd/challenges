@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/queens-attack-2/problem
 
 const fs = require('fs');
 

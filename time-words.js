@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/the-time-in-words/forum
+
 'use strict';
 
 const fs = require('fs');
@@ -28,12 +30,13 @@ const numbers = new Map([
     [1, "one"],
     [2, "two"],
     [3, "three"],
-    [4, ]
+    [4, "four"]
 ])
 
 // Complete the timeInWords function below.
 function timeInWords(h, m) {
 
+    //aborted due to not interesting
 
 }
 

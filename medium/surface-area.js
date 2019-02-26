@@ -1,4 +1,4 @@
-'use strict';
+// https://www.hackerrank.com/challenges/3d-surface-area/problem
 
 Array.prototype.flat = function (depth) { // this method implemented https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
     return this.reduce(function (flat, toFlatten) {
