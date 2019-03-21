@@ -1,7 +1,7 @@
 //https://www.hackerrank.com/challenges/determining-dna-health/problem
 
 'use strict';
-const AC = require("../aho-corasick");
+const LAZYac = require('../LAZYac');
 
 const fs = require('fs');
 process.stdin.resume();
@@ -44,19 +44,27 @@ class DNA {
     constructor(genes, health) {
         this.genes = genes;
         this.health = health;
-        this.table = new AC(this.genes);
-        console.log(this.table);
+        this.trie = new LAZYac(this.genes, {
+            "allowDuplicates": false
+        });
     }
 
     run(start, finish, d) {
-        let genes = this.genes.slice(start, finish + 1);
-        let health = this.health.slice(start, finish + 1)
-        return genes.reduce((acc, gene, i) => {
-            let matches = d.occurrences(gene, true);
-            if (matches === 0) return acc;
-            acc += matches * health[i];
-            return acc;
-        }, 0)
+        let results = this.trie.search(d, false);
+        return this.count(start, finish, results);
+
+    }
+
+    count(start, finish, results) {
+        let value = 0;
+        for (let r of results) {
+            for (let i = start; i <= finish; i++) {
+                if (this.genes[i] === r) {
+                    value += this.health[i];
+                }
+            }
+        }
+        return value;
     }
 
 }
@@ -65,7 +73,6 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-
 function main() {
     //const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
     const n = parseInt(readLine(), 10);
@@ -73,8 +80,8 @@ function main() {
     const health = readLine().split(' ').map(healthTemp => parseInt(healthTemp, 10));
     const s = parseInt(readLine(), 10);
     let dna = new DNA(genes, health);
-    let max = 0, min = Infinity;
-    console.log(s);
+    let max = 0;
+    let min = Infinity;
     for (let sItr = 0; sItr < s; sItr++) {
         let [first, last, d] = readLine().split(' ');
         let value = dna.run(parseInt(first, 10), parseInt(last, 10), d);
@@ -88,12 +95,6 @@ function main() {
 
 }
 
-process.stdin.emit('data', `6
-a b c aa d b
-1 2 3 4 5 6
-3
-1 5 caaab
-0 4 xyz
-2 4 bcdybc`);
+process.stdin.emit('data', fs.readFileSync("../data/dna.txt"));
 
 process.stdin.emit('end');
